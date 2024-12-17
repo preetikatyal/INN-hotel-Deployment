@@ -5,10 +5,10 @@ import pandas as pd
 import pickle 
 
 with open ('final_model_xgb.pkl','rb') as file:
-    model= pickle.load(file)
+    model = pickle.load(file)
 
 with open ('transformer.pkl','rb') as file:
-    pt= pickle.load(file)
+    pt = pickle.load(file)
 
 def prediction(input_list):
     
@@ -31,7 +31,7 @@ def main():
     wk= st.text_input('Enter the week nights in the booking')
     park= (lambda x:1 if x=='Yes' else 0)(st.selectbox('Is parking included in the booking',['Yes','No']))
    
-    tran_data= pt.transform([[lt,price]])
+    tran_data= pt.transform([[float(lt),float(price)]])
     lt_t=tran_data[0][0]
     price_t=tran_data[0][1]
 
