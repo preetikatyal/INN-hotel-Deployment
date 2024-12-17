@@ -36,14 +36,10 @@ def main():
     wkd = st.text_input('Enter the weekend nights in the booking')
     wk = st.text_input('Enter the week nights in booking')
     park = (lambda x:1 if x=='Yes'else 0)(st.selectbox('Is parking included in the booking',['Yes','No']))
-    month = st.slider('What will be month of arrival',min_value=1,max_value=12,step=1)
-    day = st.slider('What will be day of arrival',min_value=1,max_value=31,step=1)
-    wkday_lambda = (lambda x: 0 if x=='Mon' else 1 if x=='Tue' else 2 if x=='Wed' else 3 if x=='Thus' 
-                    else 4 if x=='Fri' else 5 if x=='Sat' else 6)
-    wkday = wkday_lambda(st.selectbox('What is the weekday of arrival',['Mon','Tue','Wed','Thus','Fri','Sat','Sun']))
+    
 
     
-    inp_list = [lt,mst,spcl,price,adult,wkd,park,wk,month,day,wkday]
+    inp_list = [lt,mst,spcl,price,adult,wkd,park,wk]
     
     if st.button('Predict'):
         response = prediction(inp_list)
